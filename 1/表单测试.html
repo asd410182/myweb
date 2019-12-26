@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>表单小测试</title>
+	<style type="text/css">
+	#page{   
+    background:url("img/memphis-colorful.png") repeat;   
+} 
+.center-in-center{   
+            border: 1px;
+            border-style: solid;
+            border-color: #E0FFFF ;
+            position: absolute;
+            padding: 20px;  
+            top: 50%;   
+            left: 50%;   
+            -webkit-transform: translate(-50%, -50%);   
+            -moz-transform: translate(-50%, -50%);   
+            -ms-transform: translate(-50%, -50%);   
+            -o-transform: translate(-50%, -50%);   
+            transform: translate(-50%, -50%);   
+        }   
+	</style>
+</head>
+<body id="page" onload="guanggao()">
+    <div class="center-in-center">
+        <form name="form" action="12.jsp" method="post" onsubmit="return beforeSubmit(this);" >
+            昵称: <br>
+            <input type="text" name="name" required><br>
+            性别：<br>
+            <input type="radio" name="sex" value="male">男
+            <input type="radio" name="sex" value="female">女<br>
+            喜欢类型：<br>
+            <input type="checkbox" name="type" value="二次元">快穿
+            <input type="checkbox" name="type" value="古风">系统
+            <input type="checkbox" name="type" value="古风">二次元
+            <input type="checkbox" name="type" value="古风">衍生<br>
+            推荐作者：
+            <input type="text" name="author"><br>
+            推荐小说：
+            <input type="text" name="novel"><br>
+            你最喜欢的小说网站
+            <select name="novelS">
+                <option value="jinjiang">晋江</option>
+                <option value="qidian">起点</option>
+                <option value="lewen">乐文</option>
+                <option value="xiaoxiang1">潇湘书院</option>
+            </select><br>
+            <input type="submit" value="提交" formtarget="_blank"> 
+            <input type="reset" value="重置" > 
+        </form>
+    </div>
+<script type="text/javascript">
+    function beforeSubmit(form){
+        if(form.author.value==''){
+            alert('推荐作者不能为空！');
+            return false;
+        }
+        if(form.novel.value==''){
+            alert('推荐小说不能为空！');
+        return false;
+        }
+        return true;
+    }
+
+    function guanggao(){
+        alert("欢迎来到网站");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>衍生小说</title>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/yangshi.css">
+    <link rel="stylesheet" type="text/css" href="css/主页.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/liMarquee.css">
+    <style type="text/css">
+ button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    display:block;
+}
+    .str_wrap{
+        position: fixed;bottom:0px;
+        background:#F0F8FF;
+        height: 4em;
+        line-height: 3em;
+        font-size: 1.2em;
+    }
+/* 右侧栏 */
+.rightcolumn {
+  float: left;
+}
+.leftcolumn {   
+  float: right;
+  width: 80%;
+}
+    </style>
+</head>
+
+<body style="background-color:  #E0FFFF;">
+	<div id="header" width=100%></div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>  
+    <script>
+        $.get("header.tpl", function(result){      
+      			$("#header").html(result);
+		});
+    // $('#router').load('./test.html');
+    </script>
+<h2 >衍生小说</h2>
+<div class="row">
+    <div class="rightcolumn">
+    <button name="biaoqian" id="三生三世十里桃花">三生三世十里桃花</button>
+    <button name="biaoqian" id="香蜜沉沉烬如霜">香蜜沉沉烬如霜</button>
+    <button name="biaoqian" id="陈情令">陈情令</button>
+    <button name="biaoqian" id="produce48">produce48</button>
+    <button name="biaoqian" id="陆小凤传奇">陆小凤传奇</button>
+    <button name="biaoqian" id="洪荒">洪荒</button>
+    <button name="biaoqian" id="超英">超英</button>
+    <button name="biaoqian" id="名著">名著</button>
+    <button name="biaoqian" id="武侠">武侠</button>
+  </div>
+  <div class="leftcolumn" style="line-height: 180%;font-size:16px;">
+    <p id="p1">点击右边按钮来获取相关信息</p>
+  </div>
+<script type="text/javascript">
+    $.ajax({
+                url: "json/ys.json",//json文件位置，文件名
+                type: "GET",//请求方式为get
+                dataType: "json", //返回数据格式为json
+                success: function(data) {//请求成功完成后要执行的方法 
+                   //给info赋值给定义好的变量
+                   var pageData=data;
+                   var arr = document.getElementsByTagName('button');
+			       for(var i = 0;i<arr.length;i++){
+				   		arr[i].onclick = function(){
+				   			for(var i=0;i<data.length;i++){
+									if(pageData[i].名称==this.id){
+											document.getElementById("p1").innerHTML=pageData[i].介绍;
+									}
+                   				}
+							}
+						}
+                   }
+            })
+</script>
+        <div class="jq22-content">
+            <div class="str1 str_wrap">
+                衍生文是指由一个大家熟知的比较热门的人物形象而编写出的其他故事，类似于续写别人作品，不同的是，续写是在原作品基础上进行故事情节的延续，或者想进一步发掘其他的主题等。而衍生则仅仅是借原作的人物再来创作一个新故事，与原作可以无任何相关内容。 
+            </div>
+        </div>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="js/jquery.liMarquee.js"></script>
+    <script>
+    $(window).load(function(){
+        $('.str1').liMarquee();
+        
+        });
+
+    </script> 
+</body>
+</html>
+
