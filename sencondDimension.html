@@ -7,7 +7,9 @@
     <link rel="stylesheet" type="text/css" href="css/主页.css">
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
     <link rel="stylesheet" href="css/liMarquee.css">
+    <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_1578964_g6rdmg2pkrg.css">
     <style type="text/css">
+        @import 'https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap-grid.min.css';
  button {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -41,30 +43,32 @@
 </head>
 
 <body style="background-color:  #E0FFFF;">
-	<div id="header" width=100%></div>
+    <div id="header" width=100%></div>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>  
     <script>
         $.get("header.tpl", function(result){      
-      			$("#header").html(result);
-		});
+                $("#header").html(result);
+        });
     // $('#router').load('./test.html');
     </script>
-<h2 >衍生小说</h2>
-<div class="row">
+<h1 align="center">衍生小说</h1>
+<div class="container">
+  <div class='row'>     
+      <div class="col-md-3">
     <div class="rightcolumn">
     <button name="biaoqian" id="三生三世十里桃花">三生三世十里桃花</button>
     <button name="biaoqian" id="香蜜沉沉烬如霜">香蜜沉沉烬如霜</button>
     <button name="biaoqian" id="陈情令">陈情令</button>
     <button name="biaoqian" id="produce48">produce48</button>
     <button name="biaoqian" id="陆小凤传奇">陆小凤传奇</button>
-    <button name="biaoqian" id="洪荒">洪荒</button>
+    <button name="biaoqian" id="洪荒">红楼梦</button>
     <button name="biaoqian" id="超英">超英</button>
-    <button name="biaoqian" id="名著">名著</button>
-    <button name="biaoqian" id="武侠">武侠</button>
   </div>
-  <div class="leftcolumn" style="line-height: 180%;font-size:16px;">
-    <p id="p1">点击右边按钮来获取相关信息</p>
+      </div>
+      <div class="col-md-9"style="border: 1px;border-style: solid;border-color: blue ;">
+<div id="p1">点击右边按钮来获取相关信息</div>
   </div>
+  <script src="js/ejs.min.js"></script>
 <script type="text/javascript">
     $.ajax({
                 url: "json/ys.json",//json文件位置，文件名
@@ -74,19 +78,25 @@
                    //给info赋值给定义好的变量
                    var pageData=data;
                    var arr = document.getElementsByTagName('button');
-			       for(var i = 0;i<arr.length;i++){
-				   		arr[i].onclick = function(){
-				   			for(var i=0;i<data.length;i++){
-									if(pageData[i].名称==this.id){
-											document.getElementById("p1").innerHTML=pageData[i].介绍;
-									}
-                   				}
-							}
-						}
+                   for(var i = 0;i<arr.length;i++){
+                        arr[i].onclick = function(){
+                            for(var i=0;i<data.length;i++){
+                                    if(pageData[i].名称==this.id){
+                                            var post = pageData[i];
+                                             $.get("tpl/expression.tpl", function(result){
+                                              var html = ejs.compile(result)(post);
+                                              $("#p1").html(html);
+                                              });
+                                    }
+                                }
+                            }
+                        }
                    }
             })
 </script>
-        <div class="jq22-content">
+      </div>
+    </div>
+            <div class="jq22-content">
             <div class="str1 str_wrap">
                 衍生文是指由一个大家熟知的比较热门的人物形象而编写出的其他故事，类似于续写别人作品，不同的是，续写是在原作品基础上进行故事情节的延续，或者想进一步发掘其他的主题等。而衍生则仅仅是借原作的人物再来创作一个新故事，与原作可以无任何相关内容。 
             </div>
