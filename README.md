@@ -1,6 +1,6 @@
 # 网页介绍
 网页一共由几个部分组成，最初当前已经确定的部分有登录，注册界面，主界面，之后是与主界面相关联的小界面
-[网页主页链接](https://asd410182.github.io/myweb/homePage.html)
+[网页主页链接](https://asd410182.github.io/myweb/submit.html)
 ## 主界面
 
 首先是主页面homePage.html，采用了布局布局，并且能够满足响应式需求。
