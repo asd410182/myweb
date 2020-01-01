@@ -9,15 +9,29 @@
 	<title>网站主页</title>
 	<style>
 		@import 'https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap-grid.min.css';
+    #denglu{
+      float: right;
+      display: inline;
+    }
 	</style>
 </head>
-<body>
+<body onload="find()" >
+  <div id="denglu"><a href="submit.html" id="p2">用户登录</a><a href="" id="p1"></a></div>
+  <script type="text/javascript">
+var loc = location.href;
+var n1 = loc.length;
+var n2 = loc.indexOf('=');
+var txt = decodeURI(loc.substr(n2+1,n1-n2));
+var box = document.getElementById('p1');
+box.innerHTML = "欢迎用户"+txt+"登录";
+document.getElementById('p2').innerHTML="登录成功";
+  </script>
   <div id="valToShow" align="right"></div>
     <ul id="nav"> 
-        <li><a href="留言.html">收藏夹</a></li> 
+        <li><a href="">收藏夹</a></li> 
         <li><a href="lable.html">标签淘淘</a></li> 
         <li><a href="form.html">表单小测试</a></li> 
-        <li><a href="need.html">建设初衷</a></li> 
+        <li><a href="">建设初衷</a></li> 
         <li><a href="homePage.html">首页</a></li> 
     </ul>
 <div>

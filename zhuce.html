@@ -12,47 +12,29 @@
 <div class="htmleaf-container">
     <div id="wrapper" class="login-page">
       <div id="login_form" class="form">
-        <form class="login-form" action="homePage.html" method="post">
+        <form action="" class="login-form" method="get">
           <input type="text" placeholder="用户名" id="r_user_name"/>
           <input type="password" placeholder="密码" id="r_password"/>
-          <button id="create" onclick="function sub()">创建账户</button>
-          <p class="message">已经有了一个账户? <a href="submit.html">立刻登录</a></p>
         </form>
+        <button id="create" onclick="sub()">创建账户</button>
+         <p class="message">已经有了一个账户? <a href="submit.html">立刻登录</a></p>
       </div>
     </div>
 </div>
+<script src="js/cookie.js"></script> 
 <script type="text/javascript">
       var strName = document.getElementById("r_user_name");
       var strKey = document.getElementById("r_password");
-      function setCookie(cname,cvalue,exdays){
-        var d = new Date();
-        d.setTime(d.getTime()+(exdays*24*60*60*1000));
-        var expires = "expires="+d.toGMTString();
-        document.cookie = cname+"="+cvalue+"; "+expires;
+    function sub(){
+        if(getCookie(strName.value)){
+            alert('用户名已存在');
+            strName.value = strName.value = '';
+        }else{
+            createCookie(strName.value,strKey.value,30);
+            alert('注册成功!跳转至登录页面?');
+            location.href = "submit.html";
         }
-      function getCookie(cname){
-          var name = cname + "=";
-          var ca = document.cookie.split(';');
-          for(var i=0; i<ca.length; i++) {
-              var c = ca[i].trim();
-                if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
-          }
-          return "";
-        }
-
-       function sub() {
-          var val = strName.value+":"+strKey.value;//把名字和密码连起来（1）
-          setCookie("user", val, 7);//存放到当前用户中，（2）
-          //先判断之前是否存在bank（3）
-          if(getCookie("bank")){
-            var bankVal =  getCookie("bank")+"_"+val;
-          }else {
-            var bankVal =  val;
-          }
-           //存放到库中（3）
-           setCookie("bank", bankVal, 100);
-           alert("注册成功")
-      }
+    }
 </script>
 </body>
 </html>
